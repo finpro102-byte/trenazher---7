@@ -1,0 +1,20 @@
+      - name: Download faces
+        run: |
+          mkdir -p assets/faces tmp
+          got=0
+          for g in men women; do
+            for i in $(seq 0 99); do
+              url="https://randomuser.me/api/portraits/$g/$i.jpg"
+              code=$(curl -sL --max-time 30 -A "Mozilla/5.0" -w '%{http_code}' "$url" -o tmp/raw.jpg || true)
+              if [ "$code" != "200" ] || ! file tmp/raw.jpg | grep -q "JPEG"; then
+                echo "пропуск $url (HTTP $code)"
+                continue
+              fi
+              got=$((got+1))
+              convert tmp/raw.jpg -resize 512x512 -quality 80 \
+                "assets/faces/face_$(printf '%04d' "$got").jpg"
+            done
+          done
+          echo "Скачано лиц: $got"
+          rm -rf tmp
+          rm -f assets/faces/.gitkeep
