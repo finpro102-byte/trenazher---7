@@ -1,0 +1,28 @@
+name: trenazher_7
+description: Тренажёр 7 — игра на распознавание и запоминание лиц
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^3.0.0
+  flutter_launcher_icons: ^0.14.4
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/faces/
+
+flutter_launcher_icons:
+  android: true
+  image_path: "assets/app_icon.png"
+  adaptive_icon_background: "#07131F"
+  adaptive_icon_foreground: "assets/app_icon.png"

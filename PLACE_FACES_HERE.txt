@@ -1,0 +1,2 @@
+Сюда складываются скачанные лица (face_0001.jpg ...).
+Скачать: bash tools/download_faces.sh 200
